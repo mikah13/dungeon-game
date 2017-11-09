@@ -1,0 +1,2 @@
+.board{margin-top:10px}.board,h1{text-align:center}h1{font-size:50px}.board-cell,.goal-cell,.player-cell,.room-cell{display:inline-block;height:10px;width:10px;background-color:#636363;border:0}.board-row{height:10px}.room-cell{background-color:#e1e4e2}.player-cell{border-radius:50%;border-width:0;border-color:#cb1b1b;background-color:#cb1b1b}.goal-cell{background-color:#6fa11e}.dark{background-color:rgba(0,0,0,.84)}button{margin-top:30px}
+/*# sourceMappingURL=main.4a44d26d.css.map*/
