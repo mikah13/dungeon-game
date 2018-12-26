@@ -78,39 +78,39 @@ class Board extends React.Component {
         let x = this.state.posX;
         let y = this.state.posY;
         window.addEventListener("keydown", (e) => {
-            console.log(e);
             if (!press) {
+                let stateBoard = this.state.board.slice();
                 if (e.keyCode === 40 || e.keyCode === 83) { //115 down
 
-                    if (x < 59 && this.state.board[x + 1][y] === "R") {
+                    if (x < 59 && stateBoard[x + 1][y] === "R") {
                         x += 1;
-                    } else if (x < 59 && this.state.board[x + 1][y] === "G") {
-                        this.state.board[x + 1][y] = "R";
+                    } else if (x < 59 && stateBoard[x + 1][y] === "G") {
+                        stateBoard[x + 1][y] = "R";
                         x += 1;
                     }
                 } else if (e.keyCode === 38 || e.keyCode === 87) { //119 up
-                    if (x > 0 && this.state.board[x - 1][y] === "R") {
+                    if (x > 0 && stateBoard[x - 1][y] === "R") {
                         x -= 1;
-                    } else if (x > 0 && this.state.board[x - 1][y] === "G") {
-                        this.state.board[x - 1][y] = "R";
+                    } else if (x > 0 && stateBoard[x - 1][y] === "G") {
+                        stateBoard[x - 1][y] = "R";
                         x -= 1;
                     }
                 } else if (e.keyCode === 37 || e.keyCode === 65) {
-                    if (y > 0 && this.state.board[x][y - 1] === "R") {
+                    if (y > 0 && stateBoard[x][y - 1] === "R") {
                         y -= 1;
                     } else if (y > 0 && this.state.board[x][y - 1] === "G") {
-                        this.state.board[x][y - 1] = "R";
+                        stateBoard[x][y - 1] = "R";
                         y -= 1;
                     }
                 } else if (e.keyCode === 39 || e.keyCode === 68) {
-                    if (x < 119 && this.state.board[x][y + 1] === "R") {
+                    if (x < 119 && stateBoard[x][y + 1] === "R") {
                         y += 1;
                     } else if (x < 119 && this.state.board[x][y + 1] === "G") {
-                        this.state.board[x][y + 1] = "R";
+                        stateBoard[x][y + 1] = "R";
                         y += 1;
                     }
                 }
-                this.setState({posX: x, posY: y})
+                this.setState({board: stateBoard, posX: x, posY: y})
                 press = true;
             }
         })
@@ -190,7 +190,8 @@ class Game extends React.Component {
         return board;
     }
     render() {
-        return (<div><h1>Dungeon Game</h1><Board board={this.state.board}/></div>)
+        return (<div>
+            <h1>Dungeon Game</h1><Board board={this.state.board}/></div>)
     }
 }
 ReactDOM.render(<Game/>, document.getElementById('content'));
